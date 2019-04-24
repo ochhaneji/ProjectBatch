@@ -22,8 +22,12 @@ $(document).ready(function () {
     $("#ssnEnrollForm").validate({ 
     	
         rules: {
-        	firstName: 'required',
-        	lastName: 'required',
+        	firstName: 'required' ,
+        	lastName: {
+        		required:true, 
+        		minlength:5,
+        		maxlength:10
+        		},
         	dob: 'required',
         	gender: 'required',
         	phone: 'required',
@@ -32,7 +36,11 @@ $(document).ready(function () {
         },
     	messages: {
     	   firstName: 'First Name field is required',
-    	   lastName: 'First Name is required',
+    	   lastName: {
+    		   required :'Last Name is required',
+    		   minlength:'Minimum length 5',
+    		   maxlength:'Max length 5'
+    		   },
     	   dob: 'Date of birth is required',
     	   gender: 'gender is required',
     	   phone: 'phone number is required',
