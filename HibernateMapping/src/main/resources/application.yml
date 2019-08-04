@@ -1,0 +1,19 @@
+server:
+  port: 7878
+
+
+spring:    
+ jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+       show_sql: true
+       format_sql: true
+       dialect: org.hibernate.dialect.OracleDialect
+ datasource:
+    url: jdbc:oracle:thin:@localhost:1521:orcl
+    username: system
+    password: manager
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+

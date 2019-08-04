@@ -8,9 +8,17 @@
 <title>Insert title here</title>
 
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+ 
+<script
+	src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+ 
 <style>
 	.error{
 		color:#FF0000;
@@ -19,11 +27,24 @@
 
 <script type="text/javascript">
 $(document).ready(function () {
+    $( "#datepicker" ).datepicker({
+        changeMonth: true,
+        changeYear: true,
+        maxDate: new Date(),
+        dateFormat: "d/M/yy"
+   	
+      });
+	
+	
     $("#ssnEnrollForm").validate({ 
     	
         rules: {
-        	firstName: 'required',
-        	lastName: 'required',
+        	firstName: 'required' ,
+        	lastName: {
+        		required:true, 
+        		minlength:5,
+        		maxlength:10
+        		},
         	dob: 'required',
         	gender: 'required',
         	phone: 'required',
@@ -32,7 +53,11 @@ $(document).ready(function () {
         },
     	messages: {
     	   firstName: 'First Name field is required',
-    	   lastName: 'First Name is required',
+    	   lastName: {
+    		   required :'Last Name is required',
+    		   minlength:'Minimum length 5',
+    		   maxlength:'Max length 5'
+    		   },
     	   dob: 'Date of birth is required',
     	   gender: 'gender is required',
     	   phone: 'phone number is required',
@@ -67,7 +92,7 @@ $(document).ready(function () {
 			</tr>
 			<tr>
 				<td>DOB :</td>
-				<td><form:input path="dob" /></td>
+				<td><form:input path="dob" id="datepicker" /></td>
 			</tr>
 			<tr>
 				<td>Gender :</td>
